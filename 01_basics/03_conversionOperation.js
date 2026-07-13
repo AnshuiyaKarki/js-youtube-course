@@ -51,8 +51,6 @@ console.log(a)
 
 // This happens because of type coercion in JavaScript.
 
-// A simple rule to remember:
-
 // ➕ If one value is a string, + does string concatenation.
 // ➕ If both values are numbers, + does addition.
 // JavaScript evaluates left to right.
