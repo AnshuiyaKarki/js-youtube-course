@@ -49,12 +49,22 @@ num1=num2=num3=2+2
 let a=+"5"
 console.log(a)
 
+// This happens because of type coercion in JavaScript.
 
-console.log("1"+2)
-console.log("1"+2+2)
-console.log(1+2+"2")
+// A simple rule to remember:
+
+// ➕ If one value is a string, + does string concatenation.
+// ➕ If both values are numbers, + does addition.
+// JavaScript evaluates left to right.
+
+// String comes first → everything after becomes a string.
+// Numbers come first → they add until a string appears.
+
+console.log("1"+2) //12=>'1'+ 2
+console.log("1"+2+2)//122->'12'+2->122
+console.log(1+2+"2")//32->3+'2'->32
 
 let count=101;
-++count;
+count++;
 console.log(count)
 
