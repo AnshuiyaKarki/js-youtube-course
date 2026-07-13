@@ -65,6 +65,11 @@ console.log("1"+2+2)//122->'12'+2->122
 console.log(1+2+"2")//32->3+'2'->32
 
 let count=101;
-count++;
+count++; 
+// If its value is used in an expression (print, assignment, comparison),
+//  JavaScript uses the old value first, then increments
+// If its value is not used, it simply increments.
+console.log(count)
+console.log(count++)
 console.log(count)
 
