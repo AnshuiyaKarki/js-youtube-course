@@ -40,3 +40,46 @@ const myFunction = function(){
 }
 
 console.log(typeof heros);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//Stack(stores Primitive data type), Heap(Non primitive data type)
+
+let myYoutubename='anshuiyakarkidotcom'
+let anothername=myYoutubename
+
+console.log(anothername)
+//now lets change anothername to smth else 
+anothername='anshuiyagoogle'
+console.log(anothername)
+console.log(myYoutubename)
+//original value not changed cause changes are made to copy 
+
+
+let UserOne={
+    email:'anshuiya@google.com',
+    designation:'sde'
+}
+
+let UserTwo={
+    email:'anshuiya@google.com.us',
+    designation:'data scientist'
+}
+
+console.log(UserTwo)
+
+
+//changing usertwo email
+UserOne=UserTwo
+
+
+UserOne.designation='data analyst'
+
+console.log(UserOne) //shows the same thing
+console.log(UserTwo) //shows the same thing
+
+
+// Non-primitive variables store a reference to the actual data in the heap,
+//  so modifying the data through the reference also modifies the original data.
+
+
