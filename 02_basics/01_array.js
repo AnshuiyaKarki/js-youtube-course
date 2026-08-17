@@ -34,3 +34,25 @@ console.log(typeof newAr)
 
 
 
+//slice, splice 
+
+console.log('A', myArr)
+
+console.log('slice')
+
+const myn1=myArr.slice(1,3)
+console.log(myn1)
+console.log('B',myArr)//Creates a new array without changing the original.
+
+console.log('splice')
+
+const myn2=myArr.splice(1,3)//Changes the original array by removing, adding, or replacing elements.
+console.log(myn2)
+console.log('B',myArr)
+
+
+
+
+
+
+
