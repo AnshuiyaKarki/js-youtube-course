@@ -62,4 +62,23 @@ console.log(tinderUser.hasOwnProperty('isLoggedIn'))
 
 
 
+//Destructuring in JavaScript means taking values out of an array or object and
+//  putting them directly into variables.'
 
+const course = {
+    coursename: "js in hindi",
+    price: "999",
+    courseInstructor: "hitesh"
+}
+
+const {courseInstructor:instructor}=course
+
+console.log(instructor)
+
+const array = [10, 20, 30];
+
+const [a,b,c]=array
+
+console.log(a)
+console.log(b)
+console.log(c)
