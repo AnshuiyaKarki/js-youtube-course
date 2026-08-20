@@ -30,6 +30,51 @@ loginUsername('Dilasha')
 
 
 
+//passing objects in functions
+const cart={
+    name:"red light mask",
+    price:"399"
+}
+
+function handleObject(anyobject){
+    console.log(`cart item is ${anyobject.name} and price is ${anyobject.price}`)
+}
+
+handleObject(cart)
+
+handleObject({
+    name:"vitamin c serum",
+    price:"200"
+})
+
+//passing arrays in function
+const myNewArray=[10,20,30]
+function returnSecondValue(anyArray){
+    console.log(anyArray[1]) 
+}
+
+returnSecondValue(myNewArray)
+returnSecondValue([200,300,400,600])
+
+//Rest operator ... = collects multiple values into one array.
+function cartElements(...num1){
+    console.log(...num1)
+
+}
+
+cartElements([500,3000,200,120])
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
