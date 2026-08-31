@@ -1,5 +1,6 @@
 //for of 
 // for...of loops through the values of an iterable.
+// An iterable is an object whose elements can be accessed sequentially using an iterator.
 myArray=[1,2,3,4,5]
 
 for (const arr of myArray){

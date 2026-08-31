@@ -1,5 +1,5 @@
 //for..in loops
-// for...in is mainly used to loop through the keys (property names) of an object.
+// for...in is  used to loop through the keys /property names of an object.
 
 let fruits=["apple","banana","orange"]
 
@@ -27,7 +27,11 @@ map.set('USA', "United States of America")
 map.set('Fr', "France")
 map.set('IN', "India")
 
-// for (const key in map){
-//     console.log(key)
-// } ??/
+for (const key in map){
+    console.log(key)
+} //doesnt execute cause map stores key value pairs as Map entries
+//  not as normal object key/property
+//  for...in is designed to iterate over an object's enumerable(property that can be listed)
+//  properties,
+
 
