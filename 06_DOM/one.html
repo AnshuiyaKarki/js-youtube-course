@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>  
+
+        <h1 id="title" class="heading">
+            DOM Learning
+            <span style="display:none">Test text</span>
+        </h1>
+
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Et cupiditate assumenda unde eaque aperiam eius quis animi,
+            delectus quos, sint odit ducimus officiis ratione quaerat
+            quasi eos ad iste fuga.
+            <br>
+        </p>
+
+        <h2>Lorem ipsum dolor</h2>
+        <h2>Lorem ipsum dolor</h2>
+        <h2>Lorem ipsum dolor</h2>
+
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+
+    </div>
+
+
+    <script>
+
+        // ==========================================
+        // 1. querySelector()
+        // ==========================================
+
+        // Selects the FIRST matching element
+
+        const title = document.querySelector("#title");
+
+        console.log(title);
+
+
+        // First h2 only
+        const firstH2 = document.querySelector("h2");
+
+        console.log(firstH2);
+
+
+        // First element with class "list-item"
+        const firstLi = document.querySelector(".list-item");
+
+        console.log(firstLi);
+
+
+        // ==========================================
+        // 2. innerText
+        // ==========================================
+
+        console.log(title.innerText);
+
+        // Gives visible text
+        //
+        // DOM Learning
+
+
+        // ==========================================
+        // 3. textContent
+        // ==========================================
+
+        console.log(title.textContent);
+
+        // Gives ALL text
+        // Including hidden text
+        //
+        // DOM Learning
+        // Test text
+
+
+        // ==========================================
+        // 4. innerHTML
+        // ==========================================
+
+        console.log(title.innerHTML);
+
+        // Gives HTML inside the element
+        //
+        // DOM Learning
+        // <span style="display:none">Test text</span>
+
+
+        // ==========================================
+        // 5. querySelectorAll()
+        // ==========================================
+
+        const tempLiList = document.querySelectorAll(".list-item");
+
+        console.log(tempLiList);
+
+        // Returns a NodeList
+        //
+        // NOT a real Array
+
+
+        // ==========================================
+        // 6. NodeList properties
+        // ==========================================
+
+        // length works
+        console.log(tempLiList.length);
+
+        // Indexing works
+        console.log(tempLiList[0]);
+        console.log(tempLiList[1]);
+        console.log(tempLiList[2]);
+        console.log(tempLiList[3]);
+
+
+        // ==========================================
+        // 7. NodeList forEach()
+        // ==========================================
+
+        tempLiList.forEach((li) => {
+
+            console.log(li.innerText);
+
+        });
+
+        // one
+        // two
+        // three
+        // four
+
+
+        // ==========================================
+        // 8. NodeList does NOT have map()
+        // ==========================================
+
+        // tempLiList.map(...)
+        // ❌ ERROR
+
+        // Because NodeList is NOT an Array
+
+
+        // ==========================================
+        // 9. Convert NodeList → Array
+        // ==========================================
+
+        const liArray = Array.from(tempLiList);
+
+        console.log(liArray);
+
+        // Now it is a REAL Array
+
+
+        // ==========================================
+        // 10. Now Array methods work
+        // ==========================================
+
+        const liText = liArray.map((li) => {
+
+            return li.innerText;
+
+        });
+
+        console.log(liText);
+
+        // ["one", "two", "three", "four"]
+
+
+        // ==========================================
+        // 11. HTMLCollection
+        // ==========================================
+
+        const htmlCollection =
+            document.getElementsByClassName("list-item");
+
+        console.log(htmlCollection);
+
+        // Returns HTMLCollection
+        //
+        // Also NOT a real Array
+
+
+        // ==========================================
+        // 12. HTMLCollection properties
+        // ==========================================
+
+        console.log(htmlCollection.length);
+
+        console.log(htmlCollection[0]);
+        console.log(htmlCollection[1]);
+
+
+        // ==========================================
+        // 13. Convert HTMLCollection → Array
+        // ==========================================
+
+        const htmlArray = Array.from(htmlCollection);
+
+        console.log(htmlArray);
+
+
+        // Now map works
+
+        const htmlText = htmlArray.map((li) => {
+
+            return li.innerText;
+
+        });
+
+        console.log(htmlText);
+
+
+        // ==========================================
+        // 14. Another way to convert → Array
+        // ==========================================
+
+        const anotherArray = [...tempLiList];
+
+        console.log(anotherArray);
+
+
+        // ==========================================
+        // FINAL SUMMARY
+        // ==========================================
+
+        /*
+        
+        querySelector()
+            ↓
+        FIRST matching element
+
+
+        querySelectorAll()
+            ↓
+        NodeList
+            ↓
+        Array-like, NOT Array
+            ↓
+        Array.from() / [...items]
+            ↓
+        REAL Array
+
+
+        getElementsByClassName()
+            ↓
+        HTMLCollection
+            ↓
+        Array-like, NOT Array
+            ↓
+        Array.from()
+            ↓
+        REAL Array
+
+
+        innerText
+            → visible text
+
+
+        textContent
+            → all text, including hidden text
+
+
+        innerHTML
+            → HTML inside the element
+
+        */
+
+    </script>
+
+</body>
+</html>
