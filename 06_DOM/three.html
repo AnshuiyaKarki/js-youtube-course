@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to create a new element in DOM</title>
+</head>
+
+<body style="background-color: #212121; color:white">
+
+</body>
+
+<script>
+    // createElement() creates a new HTML element in JavaScript
+    const div = document.createElement('div')
+
+    // Add class and ID to the element
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+
+    // Add CSS styles using JavaScript
+    div.style.backgroundColor = "Green"
+    div.style.padding = "12px"
+
+    // innerText sets/replaces the text inside the element
+    // div.innerText = "Hello"
+
+    // createTextNode() creates a text node
+    // appendChild() adds it to the existing content
+    const addText = document.createTextNode("This is Anshuiya working at Google")
+    div.appendChild(addText)
+
+    // appendChild() adds the created div to the webpage (DOM)
+    document.body.appendChild(div)
+</script>
+
+</html>

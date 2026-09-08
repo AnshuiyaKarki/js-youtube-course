@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body style="background-color:#212121;color:#fff;">
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+    </div>
+
+</body>
+
+<script>
+
+    // querySelector() selects the FIRST matching element
+    const parent = document.querySelector(".parent")
+
+    // Returns all direct child elements
+    // console.log(parent.children)
+
+    // Access a specific child using its index
+    // console.log(parent.children[1].innerHTML)
+
+    // Loop through all child elements
+    // for (let i = 0; i < parent.children.length; i++) {
+    //     console.log(parent.children[i])
+    // }
+
+    // children[2] = third child → Wednesday
+    parent.children[2].style.color = "red"
+
+
+    // firstElementChild → first child ELEMENT
+    // console.log(parent.firstElementChild)
+
+
+    // Selects the first element with class "day"
+    const dayOne = document.querySelector(".day")
+
+    // innerHTML → gets the HTML/content inside an element
+    // console.log(dayOne.innerHTML)
+
+    // parentElement → gets the element's parent
+    // console.log(dayOne.parentElement.innerHTML)
+
+    // nextElementSibling → gets the next ELEMENT at the same level
+    // console.log(dayOne.nextElementSibling.innerHTML)
+
+
+    // childNodes → gets ALL child nodes
+    // Includes ELEMENT nodes + TEXT nodes (spaces/new lines)
+    console.log("NODES: ", parent.childNodes)
+
+</script>
+
+</html>
