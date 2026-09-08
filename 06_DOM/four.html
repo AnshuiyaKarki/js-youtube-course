@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and remove elements in DOM</title>
+</head>
+
+<body style="background-color: #212121;color:#fff;">
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+
+</body>
+
+<script>
+
+    // ADD ELEMENT
+    // Create a new <li> and add it to the <ul>
+    function addLanguage(langName){
+        const li = document.createElement('li')
+
+        // innerHTML parses the string as HTML
+        li.innerHTML = `${langName}`
+
+        document.querySelector('.language').appendChild(li)
+    }
+
+    addLanguage("Python")
+    addLanguage("typescript")
+
+
+    // OPTIMIZED WAY TO ADD TEXT
+    // Instead of using innerHTML, directly create a text node
+    function OptimizedAddLanguage(langName) {
+
+        // Create a new <li>
+        const li = document.createElement('li')
+
+        // Create a text node containing the language name
+        const addText = document.createTextNode(langName)
+
+        // Put the text node inside the <li>
+        li.appendChild(addText)
+
+        // Add the <li> to the <ul>
+        document.querySelector(".language").appendChild(li)
+    }
+
+    OptimizedAddLanguage("Go")
+    OptimizedAddLanguage("Ruby")
+
+
+    // EDIT
+    // Select the second <li>
+    const secondLang = document.querySelector("li:nth-child(2)")
+
+    // NOT OPTIMIZED: cause needs to parse html content
+    // secondLang.innerHTML = "Mojo"
+
+    // OPTIMIZED WAY:
+    // Create a completely new <li>
+    const newli = document.createElement('li')
+
+    // Create a text node containing "Mojo"
+    const addText = document.createTextNode("Mojo")
+
+    // Add the text node inside the new <li>=>connect li and textnode
+    newli.appendChild(addText)
+
+    // Replace the old <li> with the new <li>
+    secondLang.replaceWith(newli)
+
+
+    // EDIT USING textContent->another optimized way
+    // Select the first <li>
+    const firstLang = document.querySelector("li:nth-child(1)")
+
+    // Replace its text directly
+    firstLang.textContent = "CPP"
+
+
+    // REMOVE
+    // Select the last <li>
+    const lastLang = document.querySelector("li:last-child")
+
+    // Remove it from the DOM
+    lastLang.remove()
+
+</script>
+</html>
