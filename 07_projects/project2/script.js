@@ -1,42 +1,3 @@
-## Solution code 
-
-## project 1 - Background Color Switcher
- 
- ```javascript
- console.log('Anshuiya')
- const buttons=document.querySelectorAll('.button')
-const body=document.querySelector("body")
-
-buttons.forEach((button)=>{
-    button.addEventListener('click',(e)=>{
-        console.log(e.target.id)
-        switch(e.target.id){
-            case "grey":
-                body.style.backgroundColor=e.target.id
-                break;
-            case "white":
-                body.style.backgroundColor=e.target.id
-                break;
-            case "blue":
-                body.style.backgroundColor=e.target.id
-                break;
-            case "yellow":
-                body.style.backgroundColor=e.target.id
-                break;
-        }
-
-    })
-    
-}) 
-```
-
-
-
-
-## project 2 - BMI Calculator 
-
-```javascript 
-
 const form=document.querySelector('form')
 
 form.addEventListener('submit',(e)=>{
@@ -56,6 +17,8 @@ form.addEventListener('submit',(e)=>{
 
     }else{
         bmi=(weight/((height*height)/10000)).toFixed(2)
+        //show result 
+        results.innerHTML=`<span>${bmi}</span>`
         passed=true
     }
 
@@ -68,8 +31,10 @@ form.addEventListener('submit',(e)=>{
             results.innerHTML=`${bmi} Overweight`
         }
     }
+
+
+   
+    
+
+
 })
-```
-
-
-
