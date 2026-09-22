@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    background-color: #212121;
+    color: #fff;
+  }
+</style>
+
+<body>
+
+  <h1>Async</h1>
+  <button id="stop">Stop</button>
+
+  <script>
+
+    // Function that can be passed as a callback
+    const sayMyName = function () {
+      console.log("Anshuiya");
+    }
+
+    // Function to change the h1 text
+    const changeText = function () {
+      document.querySelector('h1').innerHTML = "Noogler";
+    }
+
+    // setTimeout schedules the callback to run after 5 seconds
+    // It returns a timer ID, which is stored in changeTextStop
+    const changeTextStop = setTimeout(changeText, 5000);
+
+    // When Stop button is clicked, cancel the scheduled timeout
+    document.querySelector('#stop').addEventListener("click", () => {
+
+      // clearTimeout() cancels the timeout before it executes
+      clearTimeout(changeTextStop);
+
+      console.log("STOPPED");
+    });
+
+  </script>
+
+</body>
+</html>
