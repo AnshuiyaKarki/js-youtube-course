@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async</title>
+</head>
+
+<style>
+  body {
+    background-color: #212121;
+    color: #fff;
+  }
+</style>
+
+<body>
+  <h1>Async</h1>
+
+  <button id="Start">Start</button>
+  <button id="Stop">Stop</button>
+</body>
+
+<script>
+  // setInterval() repeatedly runs the function after the given time
+  const settingInterval = setInterval(function (str) {
+    console.log(str + " " + Date.now());
+  }, 1000, "Anshuiya");
+
+  // clearInterval() stops the interval
+  clearInterval(settingInterval);
+</script>
+
+</html>
