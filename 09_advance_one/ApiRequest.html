@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request</title>
+    <style>
+        .card{
+            width: 500px;
+            padding:20px;
+            border:2px solid white;
+
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            
+        }
+
+    </style>
+</head>
+<body style="background-color: #212121; color: #fff ;">
+  
+<div class="card">
+
+    
+</div>
+</body>
+<script>
+    const XHR= new XMLHttpRequest()
+    const requesturl="https://api.github.com/users/hiteshchoudhary"
+    XHR.open("GET",requesturl)
+    console.log(XHR.readyState)
+    XHR.onreadystatechange=function(){
+        console.log(XHR.readyState)
+        if (XHR.readyState===4){
+            const data=JSON.parse(this.responseText)
+            const followers=data.followers
+            const photo=(data.avatar_url)
+            document.querySelector(".card").innerHTML=
+            `
+            <img src="${photo}" alt="Hitesh Chaudhary">
+            <h1>Hitesh Choudhary </h1>
+            <p> Followers: ${followers}</p>
+            `;
+        }
+    }
+    XHR.send()
+
+
+</script>
+</html>
