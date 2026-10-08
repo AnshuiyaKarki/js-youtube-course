@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+</head>
+
+<body style="background-color: #313131;">
+
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+
+</body>
+
+<script>
+
+    // ============================================================
+    // LEXICAL SCOPING
+    // ============================================================
+
+    // Lexical scoping means:
+    // A function can access variables from the scope
+    // where that function was CREATED.
+    //
+    // Child → CAN access parent variables.
+    // Parent → CANNOT access child variables.
+
+
+    // function init() {
+    //     let name = "Mozilla";
+
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+
+    //     displayName();
+    // }
+
+    // init();
+
+
+    // ============================================================
+    // LEXICAL SCOPING EXAMPLE
+    // ============================================================
+
+    // function outer(){
+    //     let username = "hitesh";
+
+    //     function inner(){
+    //         let secret = "my123";
+
+    //         // Child can access parent's variable.
+    //         console.log("inner", username);
+
+    //         // Child can access its own variable.
+    //         console.log("inner", secret);
+    //     }
+
+    //     inner();
+
+    //     // ERROR:
+    //     // Parent cannot access child's variable.
+    //     // console.log(secret);
+    // }
+
+    // outer();
+
+    // ERROR:
+    // username belongs to outer(), so the outside world
+    // cannot access it.
+    // console.log(username);
+
+
+    // ============================================================
+    // CLOSURE
+    // ============================================================
+
+    // CLOSURE = A function + the lexical environment/scope
+    // that the function remembers from where it was created.
+    //
+    // In simple words:
+    //
+    // A function can REMEMBER and access variables from
+    // its parent scope even after the parent function
+    // has finished executing.
+
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+
+    //     // We are NOT calling displayName().
+    //     // We are returning the function itself.
+    //     return displayName;
+    // }
+
+    // const myFunc = makeFunc();
+
+    // makeFunc() has finished,
+    // but displayName still remembers "name".
+    //
+    // That is CLOSURE.
+
+    // myFunc();
+
+
+    // ============================================================
+    // REAL-LIFE CLOSURE EXAMPLE
+    // ============================================================
+
+    // Without closure, we could write:
+
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = "orange";
+    // }
+
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = "green";
+    // }
+
+
+    // ============================================================
+    // USING CLOSURE
+    // ============================================================
+
+    function clickHandler(color){
+
+        // "color" belongs to clickHandler's scope.
+        //
+        // The function below is the CHILD function.
+        // Because of lexical scoping, the child can access
+        // "color" from its parent.
+
+
+        return function(){
+
+            // This child function REMEMBERS "color".
+            //
+            // Even after clickHandler() finishes,
+            // this function can still access "color".
+            //
+            // That remembered scope is the CLOSURE.
+
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+
+    // ============================================================
+    // ORANGE BUTTON
+    // ============================================================
+
+    document.getElementById('orange').onclick = clickHandler("orange");
+
+
+    // What happens here?
+    //
+    // clickHandler("orange")
+    //        ↓
+    // runs NOW because ()
+    //        ↓
+    // color = "orange"
+    //        ↓
+    // creates the child function
+    //        ↓
+    // child function lives somewhere in memory
+    // (imagine its address is 244E5E5)
+    //        ↓
+    // returns the child function
+    //        ↓
+    // onclick stores 244E5E5
+    //        ↓
+    // WAIT...
+    //        ↓
+    // USER CLICKS ORANGE
+    //        ↓
+    // browser goes to 244E5E5
+    //        ↓
+    // child function executes
+    //        ↓
+    // child remembers color = "orange"
+    //        ↓
+    // background becomes orange
+
+
+    // ============================================================
+    // GREEN BUTTON
+    // ============================================================
+
+    document.getElementById('green').onclick = clickHandler("green");
+
+
+    // Same thing happens:
+    //
+    // clickHandler("green")
+    //        ↓
+    // runs NOW because ()
+    //        ↓
+    // color = "green"
+    //        ↓
+    // creates a child function
+    //        ↓
+    // returns the child function
+    //        ↓
+    // onclick stores that function
+    //        ↓
+    // WAIT...
+    //        ↓
+    // USER CLICKS GREEN
+    //        ↓
+    // browser executes the child function
+    //        ↓
+    // child remembers color = "green"
+    //        ↓
+    // background becomes green
+
+
+    // ============================================================
+    // IMPORTANT: () VS FUNCTION REFERENCE
+    // ============================================================
+
+    // () means EXECUTE the function NOW:
+    //
+    // clickHandler("orange")
+    //
+    //
+    // Without () means GIVE/STORE the function itself:
+    //
+    // childFunction
+    //
+    //
+    // So this:
+    //
+    // onclick = clickHandler("orange")
+    //
+    // means:
+    //
+    // 1. Execute clickHandler("orange") NOW.
+    // 2. It creates a child function.
+    // 3. It returns that child function.
+    // 4. onclick stores the returned function.
+    // 5. Browser waits for the click.
+    // 6. User clicks.
+    // 7. Browser executes the stored function.
+    //
+    // The stored function still remembers "color"
+    // because of CLOSURE.
+
+</script>
+
+</html>
